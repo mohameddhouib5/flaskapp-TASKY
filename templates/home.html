@@ -1,0 +1,155 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<style>
+    :root {
+        --primary-color: #4a6cf7;
+        --secondary-color: #6b7280;
+        --background-light: #f8fafc;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background-color: var(--background-light);
+        line-height: 1.6;
+    }
+
+    .hero-section {
+        background: linear-gradient(135deg, var(--primary-color), #6a11cb);
+        color: white;
+        padding: 6rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .hero-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: radial-gradient(circle at top right, rgba(255,255,255,0.2), transparent 50%);
+        z-index: 1;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .feature-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .cta-section {
+        background: linear-gradient(135deg, #6a11cb, var(--primary-color));
+        color: white;
+        padding: 4rem 0;
+    }
+
+    .btn-custom {
+        border-radius: 8px;
+        padding: 12px 24px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 7px 14px rgba(0,0,0,0.15);
+    }
+
+    .feature-icon {
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        font-size: 3rem;
+    }
+</style>
+
+<div class="hero-section">
+    <div class="container hero-content">
+        <h1 class="display-4 fw-bold mb-3">
+            Bienvenue à <span class="text-white">Tasky</span>
+        </h1>
+        <p class="lead mb-4">
+            Votre partenaire intelligent pour une productivité sans limites.
+        </p>
+        {% if current_user.is_authenticated %}
+            <a href="{{ url_for('todo') }}" class="btn btn-light btn-custom px-5">
+                Mes Tâches &rarr;
+            </a>
+        {% else %}
+            <div class="d-flex justify-content-center gap-3">
+                <a href="{{ url_for('register') }}" class="btn btn-light btn-custom px-4">
+                    Inscription
+                </a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-light btn-custom px-4">
+                    Connexion
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+<section class="py-6">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="bi bi-check-circle"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Gestion Simplifiée</h5>
+                    <p class="text-muted">
+                        Interface intuitive qui transforme la gestion de tâches en un jeu d'enfant.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="bi bi-calendar2-check"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Planification Intelligente</h5>
+                    <p class="text-muted">
+                        Organisez votre temps avec précision et élégance.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card text-center h-100">
+                    <div class="feature-icon">
+                        <i class="bi bi-graph-up"></i>
+                    </div>
+                    <h5 class="fw-bold mb-3">Suivi Personnalisé</h5>
+                    <p class="text-muted">
+                        Visualisez votre progression et restez motivé.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <div class="container text-center">
+        <h2 class="display-6 fw-bold mb-4">Votre Productivité, Notre Passion</h2>
+        <p class="lead mb-5">
+            Transformez votre quotidien avec Tasky. Chaque tâche accomplie est un pas vers le succès.
+        </p>
+        <a href="{{ url_for('register') }}" class="btn btn-light btn-custom px-5">
+            Démarrer Maintenant
+        </a>
+    </div>
+</section>
+{% endblock %}
