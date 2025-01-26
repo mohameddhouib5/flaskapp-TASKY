@@ -3,7 +3,7 @@
 
 Tasky is a minimalist task management web application that helps users organize their daily tasks with CRUD functionality.
 
-![Tasky Screenshot](static/2025.png) <!-- Add your screenshot path -->
+![Tasky Screenshot](static/2025.jpg) <!-- Add your screenshot path -->
 
 ## Features
 
@@ -33,5 +33,5 @@ Tasky is a minimalist task management web application that helps users organize 
 ### Setup
 1. Clone repository:
    ```bash
-   git clone https://github.com//tasky.git
-   cd tasky
+   git clone https://github.com//flaskapp-TASKY.git
+   cd flaskapp-TASKY
